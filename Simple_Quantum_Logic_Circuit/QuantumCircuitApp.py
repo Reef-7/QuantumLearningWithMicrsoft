@@ -118,7 +118,7 @@ class QuantumAnimation:
             self.cnot_timer += 1
             # Entanglement mixing behavior visualization (syncing states instantly or flipping)
             self.qA["state"] = str(random.choice([0, 1]))
-            self.qB["state"] = self.qA["state"]  # Demonstrating joint dependency state visually
+            self.qB["state"] = str(random.choice([0, 1]))  
             if self.cnot_timer > 45: # Hold for about 0.75 seconds
                 self.stage = "MOVING_TO_M"
                 self.cnot_timer = 0

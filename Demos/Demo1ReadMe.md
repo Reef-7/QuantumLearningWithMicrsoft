@@ -66,6 +66,14 @@ Applying Inverse QFT on target qubits to decode phases...
 Measuring qubits...
 Measurement results: [Zero, Zero, Zero, One, One]
 ```
+## ⚠️ Important Note on Phase Leakage (The "Power" Experiment)
+
+You might notice in the output that in the given example, the maximum probability peak is around **22.6%** and the final measurement collapsed into a lower-probability state (`|00011⟩`). 
+
+**This is expected and is a core feature of this experiment:**
+* **Non-Linear Phases:** Standard Inverse QFT relies on a strict binary geometric progression ($\theta, 2\theta, 4\theta$). In this demo, the phases are calculated using exponents ($\theta^1, \theta^2, \theta^3$) via `CalculatePhaseWithPower`.
+* **Probability Leakage:** Because exponent-based phases do not align cleanly with the binary basis of the QFT circuit, it breaks the perfect constructive interference. 
+* **The Result:** Instead of converging 100% onto a single computational state, the probability "leaks" across multiple states, demonstrating the chaotic and probabilistic nature of misaligned quantum phases.
 
 
 ## What I Learned From This Project
@@ -73,3 +81,4 @@ Measurement results: [Zero, Zero, Zero, One, One]
 * Manual implementation of the **Inverse QFT** circuit layout.
 * Managing qubit lifecycles cleanly using `use` blocks and `ResetAll`.
 * Using `DumpMachine()` for testing and debugging quantum states.
+
